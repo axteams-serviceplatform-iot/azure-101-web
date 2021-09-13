@@ -6,11 +6,13 @@ import {
   JokeContentTypeError,
   JokeNotFoundError,
   JokeResponseBodyError,
+  JokeResponseCodeError,
 } from "../api/joke"
 import CORSErrorComponent from "./errors/CorsError"
 import GetJokeContentTypeErrorComponent from "./errors/GetJokeContentTypeError"
 import GetJokeNotFoundErrorComponent from "./errors/GetJokeNotFoundError"
 import GetJokeResponseBodyErrorComponent from "./errors/GetJokeResponseBodyError"
+import GetJokeResponseCodeErrorComponent from "./errors/GetJokeResponseCodeError"
 
 const ThisComponentIsAJoke: React.FC = () => {
   const [joke, setJoke] = useState<Joke>()
@@ -30,6 +32,9 @@ const ThisComponentIsAJoke: React.FC = () => {
         }
         if (err instanceof JokeContentTypeError) {
           setError(GetJokeContentTypeErrorComponent)
+        }
+        if (err instanceof JokeResponseCodeError) {
+          setError(GetJokeResponseCodeErrorComponent)
         }
         if (err instanceof CORSError) {
           setError(CORSErrorComponent)

@@ -8,12 +8,17 @@ export interface Joke {
 export class JokeNotFoundError extends Error {}
 export class JokeContentTypeError extends Error {}
 export class JokeResponseBodyError extends Error {}
+export class JokeResponseCodeError extends Error {}
 
 export const getJoke = async (): Promise<Joke> => {
   const res = await getRequest(`${environment.baseUrl}/joke`)
 
   if (res.status === 404) {
     throw new JokeNotFoundError()
+  }
+
+  if (res.status !== 200) {
+    throw new JokeResponseCodeError()
   }
 
   const contentType = res.headers.get("content-type") ?? ""
