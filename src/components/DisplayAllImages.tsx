@@ -4,11 +4,13 @@ import { Link } from "react-router-dom"
 import { CORSError } from "../api/http"
 import {
   getImages,
+  GetImagesContentTypeError,
   GetImagesNotFoundError,
   GetImagesResponseBodyError,
   Image,
 } from "../api/images"
 import CORSErrorComponent from "./errors/CorsError"
+import GetImagesContentTypeErrorComponent from "./errors/GetImagesContentTypeError"
 import GetImagesNotFoundErrorComponent from "./errors/GetImagesNotFoundError"
 import GetImagesResponseBodyErrorComponent from "./errors/GetImagesResponseBodyError"
 
@@ -24,6 +26,8 @@ const DisplayAllImages: React.FC = () => {
       } catch (err) {
         if (err instanceof GetImagesNotFoundError) {
           setError(GetImagesNotFoundErrorComponent)
+        } else if (err instanceof GetImagesContentTypeError) {
+          setError(GetImagesContentTypeErrorComponent)
         } else if (err instanceof GetImagesResponseBodyError) {
           setError(GetImagesResponseBodyErrorComponent)
         } else if (err instanceof CORSError) {

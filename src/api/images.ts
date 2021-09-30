@@ -20,7 +20,7 @@ export const getImages = async (): Promise<Image[]> => {
 
   const contentType = res.headers.get("content-type") ?? ""
   if (!contentType.includes("application/json")) {
-    throw new GetImageIdContentTypeError()
+    throw new GetImagesContentTypeError()
   }
 
   const body = await res.json()
