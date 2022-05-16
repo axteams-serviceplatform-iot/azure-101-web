@@ -7,7 +7,6 @@ import {
   PostImagesInternalServerError,
   PostImagesNotFoundError,
   PostImagesResponseCodeError,
-  uploadImageAsBase64,
   uploadImageAsFile,
 } from "../api/images"
 import CORSErrorComponent from "./errors/CorsError"
@@ -18,7 +17,6 @@ import UnknownErrorComponent from "./errors/UnknownError"
 
 type FormValues = {
   fileList: FileList
-  asBase64: boolean
 }
 
 const UploadImage: React.FC = () => {
@@ -35,11 +33,7 @@ const UploadImage: React.FC = () => {
 
     if (file) {
       try {
-        if (data.asBase64) {
-          await uploadImageAsBase64(file)
-        } else {
-          await uploadImageAsFile(file)
-        }
+        await uploadImageAsFile(file)
       } catch (err) {
         if (err instanceof PostImagesNotFoundError) {
           setError(PostImagesNotFoundErrorComponent)
@@ -66,10 +60,6 @@ const UploadImage: React.FC = () => {
             Select a JPG photo from your local computer
           </Form.File.Label>
         </Form.File>
-        <Form.Check
-          label="Encode photo as base64 before upload"
-          {...register("asBase64")}
-        />
         <Button
           type="submit"
           id="inputGroupFileAddon01"

@@ -4,16 +4,10 @@ import ErrorBase from "./ErrorBase"
 const PostImagesInternalServerErrorComponent: React.FC = () => {
   return (
     <ErrorBase heading="Internal Server Error (500)">
-      <ul>
-        <li>
-          If your backend expects to receive the raw image bytes, make sure to{" "}
-          <strong>not</strong> check the checkbox in this form
-        </li>
-        <li>
-          If your backend expects a base64 encoded image, make sure the checkbox
-          in this form is checked
-        </li>
-      </ul>
+      <p>
+        The logs of the Function App will probably give you a hint regarding the
+        failure.
+      </p>
     </ErrorBase>
   )
 }

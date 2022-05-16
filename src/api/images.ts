@@ -1,5 +1,5 @@
 import { environment } from "../environment"
-import { getRequest, postImageRequest, postRequest, UnknownError } from "./http"
+import { getRequest, postImageRequest, UnknownError } from "./http"
 
 export interface Image {
   id: string
@@ -91,46 +91,4 @@ export const uploadImageAsFile = async (file: File): Promise<void> => {
   if (res.status !== 201 && res.status !== 404 && res.status !== 500) {
     throw new UnknownError()
   }
-}
-
-export const uploadImageAsBase64 = async (file: File): Promise<void> => {
-  const b64 = await file2Base64(file)
-
-  const body = {
-    data: b64,
-  }
-
-  const res = await postRequest(`${environment.baseUrl}/images`, body)
-
-  if (res.status === 404) {
-    throw new PostImagesNotFoundError()
-  }
-
-  if (res.status === 500) {
-    throw new PostImagesInternalServerError()
-  }
-
-  if (res.status !== 201) {
-    throw new PostImagesResponseCodeError()
-  }
-
-  if (res.status !== 201 && res.status !== 404 && res.status !== 500) {
-    throw new UnknownError()
-  }
-}
-
-const file2Base64 = (file: File): Promise<string> => {
-  return new Promise<string>((resolve, reject) => {
-    const reader = new FileReader()
-    reader.readAsDataURL(file)
-    reader.onload = () => {
-      const result = reader.result
-        ? reader.result.toString().replace("data:", "").replace(/^.+,/, "")
-        : "fail"
-
-      resolve(result)
-    }
-
-    reader.onerror = (error) => reject(error)
-  })
 }
