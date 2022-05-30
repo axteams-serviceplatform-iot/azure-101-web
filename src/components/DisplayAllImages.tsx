@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { Col, Figure, Row } from "react-bootstrap"
 import { Link } from "react-router-dom"
-import { CORSError } from "../api/http"
+import { PossibleCORSError } from "../api/http"
 import {
   getImages,
   GetImagesContentTypeError,
@@ -30,7 +30,7 @@ const DisplayAllImages: React.FC = () => {
           setError(GetImagesContentTypeErrorComponent)
         } else if (err instanceof GetImagesResponseBodyError) {
           setError(GetImagesResponseBodyErrorComponent)
-        } else if (err instanceof CORSError) {
+        } else if (err instanceof PossibleCORSError) {
           setError(CORSErrorComponent)
         }
       }

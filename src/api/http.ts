@@ -1,4 +1,4 @@
-export class CORSError extends Error {}
+export class PossibleCORSError extends Error {}
 export class UnknownError extends Error {}
 
 export const postRequest = (url: string, body: unknown): Promise<Response> => {
@@ -40,10 +40,8 @@ const send = async (url: string, init: RequestInit): Promise<Response> => {
 
   try {
     res = await fetch(url, init)
-  } catch (err) {
-    if (err.toString().includes("TypeError: Failed to fetch")) {
-      throw new CORSError()
-    }
+  } catch (err: any) {
+    throw new PossibleCORSError()
   }
 
   return res

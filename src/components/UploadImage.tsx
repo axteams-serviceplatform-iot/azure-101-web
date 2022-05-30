@@ -2,7 +2,7 @@ import bsCustomFileInput from "bs-custom-file-input"
 import React, { useEffect, useState } from "react"
 import { Button, Form } from "react-bootstrap"
 import { SubmitHandler, useForm } from "react-hook-form"
-import { CORSError } from "../api/http"
+import { PossibleCORSError } from "../api/http"
 import {
   PostImagesInternalServerError,
   PostImagesNotFoundError,
@@ -39,7 +39,7 @@ const UploadImage: React.FC = () => {
           setError(PostImagesNotFoundErrorComponent)
         } else if (err instanceof PostImagesInternalServerError) {
           setError(PostImagesInternalServerErrorComponent)
-        } else if (err instanceof CORSError) {
+        } else if (err instanceof PossibleCORSError) {
           setError(CORSErrorComponent)
         } else if (err instanceof PostImagesResponseCodeError) {
           setError(PostImagesResponseCodeErrorComponent)

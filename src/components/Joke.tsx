@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { CORSError } from "../api/http"
+import { PossibleCORSError } from "../api/http"
 import {
   getJoke,
   Joke,
@@ -36,7 +36,7 @@ const ThisComponentIsAJoke: React.FC = () => {
         if (err instanceof JokeResponseCodeError) {
           setError(GetJokeResponseCodeErrorComponent)
         }
-        if (err instanceof CORSError) {
+        if (err instanceof PossibleCORSError) {
           setError(CORSErrorComponent)
         }
       }
