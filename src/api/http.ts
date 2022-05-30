@@ -40,7 +40,7 @@ const send = async (url: string, init: RequestInit): Promise<Response> => {
 
   try {
     res = await fetch(url, init)
-  } catch (err: any) {
+  } catch (err) {
     throw new PossibleCORSError()
   }
 
