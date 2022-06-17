@@ -14,19 +14,15 @@ import GetImageIdNotFoundErrorComponent from "./errors/GetImageIdNotFoundError"
 import GetImageIdResponseBodyErrorComponent from "./errors/GetImageIdResponseBodyError"
 import GetImageIdUnknownErrorComponent from "./errors/GetImageIdUnknownError"
 
-interface RouteParams {
-  photoId: string
-}
-
 const ViewImage = () => {
-  const { photoId } = useParams<RouteParams>()
+  const { photoId } = useParams()
   const [photo, setPhoto] = useState<Image>()
   const [error, setError] = useState<React.ReactNode>()
 
   useEffect(() => {
-    const fetchImage = async () => {
+    const fetchImage = async (id: string) => {
       try {
-        const p = await getImageById(photoId)
+        const p = await getImageById(id)
         setPhoto(p)
       } catch (err) {
         if (err instanceof GetImageIdNotFoundError) {
@@ -40,7 +36,10 @@ const ViewImage = () => {
         }
       }
     }
-    fetchImage()
+
+    if (photoId) {
+      fetchImage(photoId)
+    }
   }, [photoId])
 
   return (

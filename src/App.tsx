@@ -1,6 +1,6 @@
 import React from "react"
 import { Col, Container, Row } from "react-bootstrap"
-import { BrowserRouter, Link, Route, Switch } from "react-router-dom"
+import { BrowserRouter, Link, Outlet, Route, Routes } from "react-router-dom"
 import DisplayAllImages from "./components/DisplayAllImages"
 import ThisComponentIsAJoke from "./components/Joke"
 import UploadImage from "./components/UploadImage"
@@ -8,15 +8,13 @@ import ViewImage from "./components/ViewImage"
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <Container fluid className="w-75">
+    <Container fluid className="w-75">
+      <BrowserRouter>
         <Row>
           <Col>
-            <Link to="/">
-              <h1 className="pt-5 pl-5 pr-5 display-4 text-center">
-                My Photo Album
-              </h1>
-            </Link>
+            <h1 className="pt-5 pl-5 pr-5 display-4 text-center">
+              <Link to="/">My Photo Album</Link>
+            </h1>
           </Col>
         </Row>
         <Row>
@@ -24,29 +22,41 @@ const App = () => {
             <ThisComponentIsAJoke />
           </Col>
         </Row>
-        <Switch>
-          <Route path="/" exact>
-            <Row>
-              <Col>
-                <UploadImage />
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <DisplayAllImages />
-              </Col>
-            </Row>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="photo" element={<ViewImageRoute />}>
+            <Route path=":photoId" element={<ViewImage />} />
           </Route>
-          <Route path="/photo/:photoId">
-            <Row>
-              <Col>
-                <ViewImage />
-              </Col>
-            </Row>
-          </Route>
-        </Switch>
-      </Container>
-    </BrowserRouter>
+        </Routes>
+      </BrowserRouter>
+    </Container>
+  )
+}
+
+const Home = () => {
+  return (
+    <>
+      <Row>
+        <Col>
+          <UploadImage />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <DisplayAllImages />
+        </Col>
+      </Row>
+    </>
+  )
+}
+
+const ViewImageRoute = () => {
+  return (
+    <Row>
+      <Col>
+        <Outlet />
+      </Col>
+    </Row>
   )
 }
 
