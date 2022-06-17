@@ -2,7 +2,7 @@ import React from "react"
 import { environment } from "../../environment"
 import ErrorBase from "./ErrorBase"
 
-const PostImagesNotFoundErrorComponent: React.FC = () => {
+const PostImagesNotFoundErrorComponent = () => {
   return (
     <ErrorBase heading="The POST /images route was not found (HTTP 404)">
       <ul>

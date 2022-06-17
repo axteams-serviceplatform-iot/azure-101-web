@@ -1,7 +1,7 @@
 import React from "react"
 import ErrorBase from "./ErrorBase"
 
-const GetImageIdUnknownErrorComponent: React.FC = () => {
+const GetImageIdUnknownErrorComponent = () => {
   return (
     <ErrorBase heading="An unknown error has occurred!">
       <p>

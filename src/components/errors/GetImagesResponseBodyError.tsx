@@ -1,7 +1,7 @@
 import React from "react"
 import ErrorBase from "./ErrorBase"
 
-const GetImagesResponseBodyErrorComponent: React.FC = () => {
+const GetImagesResponseBodyErrorComponent = () => {
   return (
     <ErrorBase heading="The response body returned from GET /images is not right.">
       <p>

@@ -1,7 +1,7 @@
 import React from "react"
 import ErrorBase from "./ErrorBase"
 
-const GetImageIdContentTypeErrorComponent: React.FC = () => {
+const GetImageIdContentTypeErrorComponent = () => {
   return (
     <ErrorBase heading="The response content type header returned from GET /images/&#x0007B;id&#x0007D; is not right.">
       <p>

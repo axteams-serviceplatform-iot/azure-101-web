@@ -14,9 +14,9 @@ import GetImagesContentTypeErrorComponent from "./errors/GetImagesContentTypeErr
 import GetImagesNotFoundErrorComponent from "./errors/GetImagesNotFoundError"
 import GetImagesResponseBodyErrorComponent from "./errors/GetImagesResponseBodyError"
 
-const DisplayAllImages: React.FC = () => {
+const DisplayAllImages = () => {
   const [images, setImages] = useState<Image[]>([])
-  const [error, setError] = useState<React.FC>()
+  const [error, setError] = useState<React.ReactNode>()
 
   useEffect(() => {
     const fetchImages = async () => {
@@ -77,9 +77,7 @@ const DisplayAllImages: React.FC = () => {
   )
 }
 
-const ThumbnailComponent: React.FC<{ uri: string }> = (props: {
-  uri: string
-}) => {
+const ThumbnailComponent = (props: { uri: string }) => {
   return (
     <Figure>
       <Figure.Image
@@ -93,9 +91,7 @@ const ThumbnailComponent: React.FC<{ uri: string }> = (props: {
   )
 }
 
-const FullsizeImageComponent: React.FC<{ uri: string }> = (props: {
-  uri: string
-}) => {
+const FullsizeImageComponent = (props: { uri: string }) => {
   return (
     <Figure>
       <Figure.Image

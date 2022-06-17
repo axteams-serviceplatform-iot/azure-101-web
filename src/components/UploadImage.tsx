@@ -19,8 +19,8 @@ type FormValues = {
   fileList: FileList
 }
 
-const UploadImage: React.FC = () => {
-  const [error, setError] = useState<React.FC>()
+const UploadImage = () => {
+  const [error, setError] = useState<React.ReactNode>()
 
   const { register, handleSubmit } = useForm<FormValues>()
 

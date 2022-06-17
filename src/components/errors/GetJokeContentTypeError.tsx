@@ -1,7 +1,7 @@
 import React from "react"
 import ErrorBase from "./ErrorBase"
 
-const GetJokeContentTypeErrorComponent: React.FC = () => {
+const GetJokeContentTypeErrorComponent = () => {
   return (
     <ErrorBase heading="The response content type header returned from GET /joke is not right.">
       <p>

@@ -7,7 +7,7 @@ interface Props {
   children: React.ReactNode
 }
 
-const ErrorBase: React.FC<Props> = (props: Props) => {
+const ErrorBase = (props: Props) => {
   return (
     <Alert variant="danger">
       <Alert.Heading>Oh snap! {props.heading}</Alert.Heading>

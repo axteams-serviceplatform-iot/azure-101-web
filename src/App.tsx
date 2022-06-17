@@ -6,7 +6,7 @@ import ThisComponentIsAJoke from "./components/Joke"
 import UploadImage from "./components/UploadImage"
 import ViewImage from "./components/ViewImage"
 
-const App: React.FC = () => {
+const App = () => {
   return (
     <BrowserRouter>
       <Container fluid className="w-75">
