@@ -18,10 +18,10 @@ interface RouteParams {
   photoId: string
 }
 
-const ViewImage: React.FC = () => {
+const ViewImage = () => {
   const { photoId } = useParams<RouteParams>()
   const [photo, setPhoto] = useState<Image>()
-  const [error, setError] = useState<React.FC>()
+  const [error, setError] = useState<React.ReactNode>()
 
   useEffect(() => {
     const fetchImage = async () => {
@@ -45,31 +45,33 @@ const ViewImage: React.FC = () => {
 
   return (
     <Container className="p-5 mb-2 bg-light text-dark">
-      {error ?? (
-        <Row>
-          <Col>{error}</Col>
+      <>
+        {error ?? (
+          <Row>
+            <Col>{error}</Col>
+          </Row>
+        )}
+        <Row className="text-center">
+          <Col>
+            <h3>{photoId}</h3>
+          </Col>
         </Row>
-      )}
-      <Row className="text-center">
-        <Col>
-          <h3>{photoId}</h3>
-        </Col>
-      </Row>
-      <Row className="text-center">
-        <Col>
-          {photo?.uri ? (
-            <ImageComponent
-              className="image-class-name w-100"
-              src={photo.uri}
-            />
-          ) : (
-            <ImageComponent
-              className="image-class-name w-100"
-              src={noImageAvailable}
-            />
-          )}
-        </Col>
-      </Row>
+        <Row className="text-center">
+          <Col>
+            {photo?.uri ? (
+              <ImageComponent
+                className="image-class-name w-100"
+                src={photo.uri}
+              />
+            ) : (
+              <ImageComponent
+                className="image-class-name w-100"
+                src={noImageAvailable}
+              />
+            )}
+          </Col>
+        </Row>
+      </>
     </Container>
   )
 }

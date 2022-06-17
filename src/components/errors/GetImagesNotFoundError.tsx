@@ -2,7 +2,7 @@ import React from "react"
 import { environment } from "../../environment"
 import ErrorBase from "./ErrorBase"
 
-const GetImagesNotFoundErrorComponent: React.FC = () => {
+const GetImagesNotFoundErrorComponent = () => {
   return (
     <ErrorBase heading="The GET /images route was not found (HTTP 404).">
       <ul>

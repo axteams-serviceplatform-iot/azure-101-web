@@ -1,7 +1,7 @@
 import React from "react"
 import ErrorBase from "./ErrorBase"
 
-const UnknownErrorComponent: React.FC = () => {
+const UnknownErrorComponent = () => {
   return (
     <ErrorBase heading="An unknown error has occurred!">
       <p>

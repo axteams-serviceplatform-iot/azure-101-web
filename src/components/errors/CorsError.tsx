@@ -1,7 +1,7 @@
 import React from "react"
 import ErrorBase from "./ErrorBase"
 
-const CORSErrorComponent: React.FC = () => {
+const CORSErrorComponent = () => {
   return (
     <ErrorBase heading="Possible CORS error.">
       <p>Make sure that you have configured CORS for your Function App:</p>

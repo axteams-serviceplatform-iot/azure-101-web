@@ -2,7 +2,7 @@ import React from "react"
 import { environment } from "../../environment"
 import ErrorBase from "./ErrorBase"
 
-const GetImageIdNotFoundErrorComponent: React.FC = () => {
+const GetImageIdNotFoundErrorComponent = () => {
   return (
     <ErrorBase heading="Either the GET /images/&#x0007B;id&#x0007D; route is missing or the image with this ID does not exist.">
       <ul>

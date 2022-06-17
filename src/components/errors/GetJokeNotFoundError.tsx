@@ -2,7 +2,7 @@ import React from "react"
 import { environment } from "../../environment"
 import ErrorBase from "./ErrorBase"
 
-const GetJokeNotFoundErrorComponent: React.FC = () => {
+const GetJokeNotFoundErrorComponent = () => {
   return (
     <ErrorBase heading="The GET /joke route was not found (HTTP 404).">
       <ul>

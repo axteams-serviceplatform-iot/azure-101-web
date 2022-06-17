@@ -14,9 +14,9 @@ import GetJokeNotFoundErrorComponent from "./errors/GetJokeNotFoundError"
 import GetJokeResponseBodyErrorComponent from "./errors/GetJokeResponseBodyError"
 import GetJokeResponseCodeErrorComponent from "./errors/GetJokeResponseCodeError"
 
-const ThisComponentIsAJoke: React.FC = () => {
+const ThisComponentIsAJoke = () => {
   const [joke, setJoke] = useState<Joke>()
-  const [error, setError] = useState<React.FC>()
+  const [error, setError] = useState<React.ReactNode>()
 
   useEffect(() => {
     const getNewJoke = async () => {

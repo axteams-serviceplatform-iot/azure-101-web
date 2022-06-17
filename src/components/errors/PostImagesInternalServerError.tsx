@@ -1,7 +1,7 @@
 import React from "react"
 import ErrorBase from "./ErrorBase"
 
-const PostImagesInternalServerErrorComponent: React.FC = () => {
+const PostImagesInternalServerErrorComponent = () => {
   return (
     <ErrorBase heading="Internal Server Error (500)">
       <p>

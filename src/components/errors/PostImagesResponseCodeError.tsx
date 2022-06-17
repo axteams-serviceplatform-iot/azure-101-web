@@ -1,7 +1,7 @@
 import React from "react"
 import ErrorBase from "./ErrorBase"
 
-const PostImagesResponseCodeErrorComponent: React.FC = () => {
+const PostImagesResponseCodeErrorComponent = () => {
   return (
     <ErrorBase heading="Wrong response code!">
       <p>
